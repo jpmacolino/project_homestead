@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"c:\\\\dev\\\\project_homestead\" /a)",
+      "Bash(npm --version)",
+      "Bash(mkdir -p /tmp/homestead_bak)",
+      "Bash(mv /c/dev/project_homestead/*.md /tmp/homestead_bak/)",
+      "Bash(mv /c/dev/project_homestead/.vscode /tmp/homestead_bak/)",
+      "Bash(mv /c/dev/project_homestead/.claude /tmp/homestead_bak/)",
+      "Bash(npm create *)",
+      "Bash(mv /tmp/homestead_bak/*.md /c/dev/project_homestead/)",
+      "Bash(mv /tmp/homestead_bak/.vscode /c/dev/project_homestead/)",
+      "Bash(npm install *)",
+      "Bash(npx tailwindcss *)",
+      "Bash(npm run *)",
+      "Bash(npm list *)",
+      "Bash(git -C /c/dev/project_homestead status)",
+      "Bash(git -C /c/dev/project_homestead add .gitignore README.md eslint.config.js index.html package-lock.json package.json postcss.config.js public/ src/ tailwind.config.js tsconfig.app.json tsconfig.json tsconfig.node.json vite.config.ts)",
+      "Bash(git -C /c/dev/project_homestead status --short)",
+      "Bash(git -C /c/dev/project_homestead commit -m ' *)"
+    ]
+  }
+}
