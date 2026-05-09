@@ -1,0 +1,112 @@
+[
+  {
+    "id": "number_1",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "1",
+    "label": "the number one",
+    "association": "1 is for one rooster crowing at dawn to wake the whole farm!",
+    "audio_key": "number_1",
+    "assess_weight": 1.0,
+    "image_key": "number_1"
+  },
+  {
+    "id": "number_2",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "2",
+    "label": "the number two",
+    "association": "2 is for two goats butting heads in the sunny pasture!",
+    "audio_key": "number_2",
+    "assess_weight": 1.0,
+    "image_key": "number_2"
+  },
+  {
+    "id": "number_3",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "3",
+    "label": "the number three",
+    "association": "3 is for three chicks hatching from their warm eggs!",
+    "audio_key": "number_3",
+    "assess_weight": 1.0,
+    "image_key": "number_3"
+  },
+  {
+    "id": "number_4",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "4",
+    "label": "the number four",
+    "association": "4 is for four rows of corn planted in the garden!",
+    "audio_key": "number_4",
+    "assess_weight": 1.0,
+    "image_key": "number_4"
+  },
+  {
+    "id": "number_5",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "5",
+    "label": "the number five",
+    "association": "5 is for five eggs resting snug in the nest!",
+    "audio_key": "number_5",
+    "assess_weight": 1.0,
+    "image_key": "number_5"
+  },
+  {
+    "id": "number_6",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "6",
+    "label": "the number six",
+    "association": "6 is for six jars of jam lined up on the pantry shelf!",
+    "audio_key": "number_6",
+    "assess_weight": 1.0,
+    "image_key": "number_6"
+  },
+  {
+    "id": "number_7",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "7",
+    "label": "the number seven",
+    "association": "7 is for seven apple trees standing tall in the orchard!",
+    "audio_key": "number_7",
+    "assess_weight": 1.0,
+    "image_key": "number_7"
+  },
+  {
+    "id": "number_8",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "8",
+    "label": "the number eight",
+    "association": "8 is for eight honeybees buzzing around the hive!",
+    "audio_key": "number_8",
+    "assess_weight": 1.0,
+    "image_key": "number_8"
+  },
+  {
+    "id": "number_9",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "9",
+    "label": "the number nine",
+    "association": "9 is for nine ears of corn drying in the barn!",
+    "audio_key": "number_9",
+    "assess_weight": 1.0,
+    "image_key": "number_9"
+  },
+  {
+    "id": "number_10",
+    "topic": "numbers",
+    "track": "sprout",
+    "display_value": "10",
+    "label": "the number ten",
+    "association": "10 is for ten strawberries ripe and red on the vine!",
+    "audio_key": "number_10",
+    "assess_weight": 1.0,
+    "image_key": "number_10"
+  }
+]
