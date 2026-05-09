@@ -16,27 +16,67 @@ Vite chosen over Create React App (CRA is deprecated). React 18.2, Tailwind 3.x,
 
 Decision #7 in ARCHITECTURE.md elevates "full offline capability via Service Worker + Cache API" to a hard MVP requirement, ahead of what the build spec strictly mandates. Rationale: deferring service worker setup to v1 risks subtle caching bugs that are hard to reproduce. This is an interpretation of the spec, not a direct transcription.
 
-**7. Color roster reduced to 10; indigo and violet collapsed to single 
+**7. Color roster reduced to 10; indigo and violet collapsed to single
 purple entry.**
-Indigo and violet removed from the color set. Purple (#800080) replaces 
-both. assess_weight is 1.0 for all colors — no special-cased weights 
+Indigo and violet removed from the color set. Purple (#800080) replaces
+both. assess_weight is 1.0 for all colors — no special-cased weights
 anywhere in the content data. ROYGBIV becomes ROYGBV.
 
 **8. activeChildId hardcoded as "child_1" for MVP.**
-HomeScreen and useProgress use a single named constant ACTIVE_CHILD_ID = 
-"child_1". This is the swap point for multi-profile support in Session 10 
+HomeScreen and useProgress use a single named constant ACTIVE_CHILD_ID =
+"child_1". This is the swap point for multi-profile support in Session 10
 — do not spread this string elsewhere.
 
 **9. HUB_CONFIG is module-level in HomeScreen.**
-The four hub definitions (topic, label, icon, route) live as a 
-module-level constant in HomeScreen.tsx, not as props or context. 
+The four hub definitions (topic, label, icon, route) live as a
+module-level constant in HomeScreen.tsx, not as props or context.
 Content is static for MVP — revisit if hubs become dynamic in v1.
 
 **10. tsconfig.app.json has resolveJsonModule: true.**
-Required for typed JSON data imports (src/data/*.json). Added in 
+Required for typed JSON data imports (src/data/\*.json). Added in
 Session 3. All content JSON imports are typed as a result.
 
 **11. /learn route changed to /learn/:topic.**
-React Router route updated in App.tsx so all four hub routes 
-(/learn/letters, /learn/numbers, /learn/shapes, /learn/colors) 
+React Router route updated in App.tsx so all four hub routes
+(/learn/letters, /learn/numbers, /learn/shapes, /learn/colors)
 resolve from a single parameterized route.
+
+**12. Background image requires pointer-events-none.**
+The homestead_default.png background uses absolute inset-0 positioning.
+Without pointer-events-none on the img element it captures all pointer
+events despite z-0, blocking hub and parent corner interaction.
+All future full-screen background images must include pointer-events-none.
+
+## 2026-05-09 — Topic hub uses sub-menu for mode selection
+
+Hub tap (Barn, Garden, Farmhouse, Pasture) navigates to a TopicMenu
+screen showing available modes for that topic, not directly into Learn
+Mode. MVP shows Learn always; Practice unlocks per-topic once the child
+has viewed every item in that topic in Learn Mode at least once.
+Tracked in localStorage under learn*seen*<topic>. Future modes (Story,
+Matching, Math) plug into the same sub-menu. Route shape:
+/topic/:topic for the menu, /learn/:topic and /practice/:topic for
+the modes.
+
+## 2026-05-09 — Learn Mode is a single ordered run for MVP
+
+Learn Mode for MVP presents the full topic in canonical order (A-Z,
+1-10, etc.), child-paced, exit anytime, position not remembered between
+sessions. No lesson chunking, no scoring, no progression within Learn.
+Lesson structure (chunked lessons, review lessons, lesson scoring) is a
+deferred design question — revisit in Session 11 when the full
+curriculum engine is built. Building a chunking system now based on a
+guess risks rework when the v1 engine arrives with a different model.
+
+## 2026-05-09 — Audio: SpeechSynthesis for narration in MVP
+
+useAudio uses the browser SpeechSynthesis API for character narration
+in MVP. Quality is robotic and device-dependent — acceptable for
+internal dev/QA only, not for any external user. The key-based audio
+abstraction (Decision #3) preserves the swap path to recorded or
+ElevenLabs narration in v1. Sound effects (correct_chime,
+incorrect_tone) remain separate and use Web Audio API placeholder
+tones per spec §8.1. useAudio.playNarration must no-op silently when
+SpeechSynthesis is unavailable or voices have not loaded — verify
+behavior on Kindle Fire Silk early in Session 4 QA; if Silk support is
+broken, fall back to stub for that platform.
