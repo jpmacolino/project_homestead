@@ -33,7 +33,7 @@ export default function HomeScreen() {
         src={bgImage}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 z-0 w-full h-full object-cover"
+        className="absolute inset-0 z-0 w-full h-full object-cover pointer-events-none"
       />
 
       {/* Parent corner — top right */}
@@ -51,8 +51,8 @@ export default function HomeScreen() {
       </button>
 
       {/* Topic hub grid — centered */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <div className="grid grid-cols-2 gap-6">
+      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+        <div className="grid grid-cols-2 gap-6 pointer-events-auto">
           {HUB_CONFIG.map(({ topic, label, icon, route, data }) => {
             const masteredCount = data.filter((item) => isMastered(item.id)).length;
             return (
