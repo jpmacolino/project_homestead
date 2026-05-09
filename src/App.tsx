@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeScreen />} />
-      <Route path="/learn" element={<LearnScreen />} />
+      <Route path="/learn/:topic" element={<LearnScreen />} />
       <Route path="/practice" element={<PracticeScreen />} />
       <Route path="/daily" element={<DailyScreen />} />
       <Route path="/parent" element={<ParentCornerScreen />} />
