@@ -44,7 +44,10 @@ homestead/
     services/      # Pure TypeScript logic modules with no React dependencies — the curriculum engine, mastery calculator, and daily session generator live here
     data/          # Static content JSON files (letters.json, numbers.json, shapes.json, colors.json) — loaded at runtime, never imported directly by components
     audio/         # Audio file assets accessed only via key string — no component ever imports a file path from this directory directly
-    assets/        # Static images and SVG files; SVG is preferred for scalability, PNG accepted for Canva exports only
+    assets/ 
+      characters/    # Hen expression PNGs
+      backgrounds/   # Homestead scene
+      icons/         # Hub icons + parent corner
     db/            # Dexie schema definition, IndexedDB access helpers, migration and seeder scripts (v1+ only; not present in MVP)
     sync/          # Supabase client initialization and sync event logic — push-on-session-end, pull-on-login (v2+ only; not present in MVP or v1)
   public/          # Static files served at the root URL — favicon, manifest.json, service worker entry point, and precache manifest

@@ -15,3 +15,28 @@ Vite chosen over Create React App (CRA is deprecated). React 18.2, Tailwind 3.x,
 ## 2026-05-08 — Offline capability scope
 
 Decision #7 in ARCHITECTURE.md elevates "full offline capability via Service Worker + Cache API" to a hard MVP requirement, ahead of what the build spec strictly mandates. Rationale: deferring service worker setup to v1 risks subtle caching bugs that are hard to reproduce. This is an interpretation of the spec, not a direct transcription.
+
+**7. Color roster reduced to 10; indigo and violet collapsed to single 
+purple entry.**
+Indigo and violet removed from the color set. Purple (#800080) replaces 
+both. assess_weight is 1.0 for all colors — no special-cased weights 
+anywhere in the content data. ROYGBIV becomes ROYGBV.
+
+**8. activeChildId hardcoded as "child_1" for MVP.**
+HomeScreen and useProgress use a single named constant ACTIVE_CHILD_ID = 
+"child_1". This is the swap point for multi-profile support in Session 10 
+— do not spread this string elsewhere.
+
+**9. HUB_CONFIG is module-level in HomeScreen.**
+The four hub definitions (topic, label, icon, route) live as a 
+module-level constant in HomeScreen.tsx, not as props or context. 
+Content is static for MVP — revisit if hubs become dynamic in v1.
+
+**10. tsconfig.app.json has resolveJsonModule: true.**
+Required for typed JSON data imports (src/data/*.json). Added in 
+Session 3. All content JSON imports are typed as a result.
+
+**11. /learn route changed to /learn/:topic.**
+React Router route updated in App.tsx so all four hub routes 
+(/learn/letters, /learn/numbers, /learn/shapes, /learn/colors) 
+resolve from a single parameterized route.
