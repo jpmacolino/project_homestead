@@ -3,6 +3,26 @@ import type { ChildProgress, MasteryRecord, SkillResult } from "../types/progres
 
 const KEY_PREFIX = "homestead_progress_";
 
+const LEARN_SEEN_PREFIX = "homestead.learn_seen.";
+
+function learnSeenKey(childId: string): string {
+  return `${LEARN_SEEN_PREFIX}${childId}`;
+}
+
+function loadLearnSeen(childId: string): Record<string, boolean> {
+  try {
+    const raw = localStorage.getItem(learnSeenKey(childId));
+    if (raw) return JSON.parse(raw) as Record<string, boolean>;
+  } catch {
+    // corrupted storage — start fresh
+  }
+  return {};
+}
+
+function saveLearnSeen(childId: string, seen: Record<string, boolean>): void {
+  localStorage.setItem(learnSeenKey(childId), JSON.stringify(seen));
+}
+
 function storageKey(childId: string): string {
   return `${KEY_PREFIX}${childId}`;
 }
@@ -25,10 +45,13 @@ export function useProgress(childId: string) {
   const [progress, setProgress] = useState<ChildProgress>(() =>
     loadProgress(childId)
   );
+  const [learnSeen, setLearnSeen] = useState<Record<string, boolean>>(() =>
+    loadLearnSeen(childId)
+  );
 
-  // Reload when childId changes (e.g. switching active child profile)
   useEffect(() => {
     setProgress(loadProgress(childId));
+    setLearnSeen(loadLearnSeen(childId));
   }, [childId]);
 
   const persist = useCallback((updated: ChildProgress): void => {
@@ -108,6 +131,32 @@ export function useProgress(childId: string) {
     persist({ childId, skillEvents: [], mastery: [] });
   }, [childId, persist]);
 
+  const isTopicLearnComplete = useCallback(
+    (topic: string): boolean => learnSeen[topic] === true,
+    [learnSeen]
+  );
+
+  const markTopicLearnComplete = useCallback(
+    (topic: string): void => {
+      const updated = { ...learnSeen, [topic]: true };
+      saveLearnSeen(childId, updated);
+      setLearnSeen(updated);
+    },
+    [childId, learnSeen]
+  );
+
+  // QA only — remove before v1
+  const __devMarkAllLearnComplete = useCallback((): void => {
+    const updated: Record<string, boolean> = {
+      letters: true,
+      numbers: true,
+      shapes: true,
+      colors: true,
+    };
+    saveLearnSeen(childId, updated);
+    setLearnSeen(updated);
+  }, [childId]);
+
   return {
     recordSkillEvent,
     markMastered,
@@ -115,5 +164,8 @@ export function useProgress(childId: string) {
     getMasteryRecord,
     getStruggleItems,
     resetProgress,
+    isTopicLearnComplete,
+    markTopicLearnComplete,
+    __devMarkAllLearnComplete,
   };
 }

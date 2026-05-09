@@ -2,25 +2,9 @@ import { useNavigate } from "react-router-dom";
 import HenCharacter from "../components/HenCharacter";
 import TopicHub from "../components/TopicHub";
 import { useProgress } from "../hooks/useProgress";
-import lettersData from "../data/letters.json";
-import numbersData from "../data/numbers.json";
-import shapesData from "../data/shapes.json";
-import colorsData from "../data/colors.json";
+import { ACTIVE_CHILD_ID, HUB_CONFIG } from "../data/hubs";
 import bgImage from "../assets/backgrounds/homestead_default.png";
 import parentCornerIcon from "../assets/icons/parent_corner.png";
-import hubLetters from "../assets/icons/hub_letters.png";
-import hubNumbers from "../assets/icons/hub_numbers.png";
-import hubShapes from "../assets/icons/hub_shapes.png";
-import hubColors from "../assets/icons/hub_colors.png";
-
-const ACTIVE_CHILD_ID = "child_1";
-
-const HUB_CONFIG = [
-  { topic: "letters" as const, label: "Letters", icon: hubLetters, route: "/learn/letters", data: lettersData },
-  { topic: "numbers" as const, label: "Numbers", icon: hubNumbers, route: "/learn/numbers", data: numbersData },
-  { topic: "shapes"  as const, label: "Shapes",  icon: hubShapes,  route: "/learn/shapes",  data: shapesData  },
-  { topic: "colors"  as const, label: "Colors",  icon: hubColors,  route: "/learn/colors",  data: colorsData  },
-] as const;
 
 export default function HomeScreen() {
   const navigate = useNavigate();
@@ -53,7 +37,7 @@ export default function HomeScreen() {
       {/* Topic hub grid — centered */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <div className="grid grid-cols-2 gap-6 pointer-events-auto">
-          {HUB_CONFIG.map(({ topic, label, icon, route, data }) => {
+          {HUB_CONFIG.map(({ topic, label, icon, data }) => {
             const masteredCount = data.filter((item) => isMastered(item.id)).length;
             return (
               <TopicHub
@@ -61,7 +45,7 @@ export default function HomeScreen() {
                 topic={topic}
                 label={label}
                 iconPath={icon}
-                onPress={() => navigate(route)}
+                onPress={() => navigate(`/topic/${topic}`)}
                 masteredCount={masteredCount}
                 totalCount={data.length}
               />
