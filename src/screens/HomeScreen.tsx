@@ -33,7 +33,7 @@ export default function HomeScreen() {
         src={bgImage}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 z-0 w-full h-full object-cover"
       />
 
       {/* Parent corner — top right */}
