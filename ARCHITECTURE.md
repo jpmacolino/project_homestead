@@ -80,9 +80,6 @@ All components and hooks accept an `audio_key` string and resolve it through the
 **4. All learning content is defined as JSON data, never hardcoded in components.**
 Skills, letters, numbers, shapes, colors, and seasons live in `src/data/*.json`. Components receive skill objects as props. The content data model (including `assess_weight`, `audio_key`, `image_key`, and `association`) is defined once and consumed everywhere. Content expansion requires only a data change — no code change.
 
-**5. Indigo `assess_weight` is 0.3; all other skills are 1.0.**
-Indigo is included in the ROYGBIV sequence for completeness but is not rigorously assessed. It is genuinely difficult for young children to distinguish from blue and violet. This value lives in the content data (`src/data/colors.json`), not in the curriculum logic — the engine does not special-case indigo; it reads the weight from the data.
-
 ---
 
 ### Additional decisions implied by the build spec

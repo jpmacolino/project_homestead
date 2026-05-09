@@ -65,23 +65,20 @@ Content is organized into five progressive tracks. A child advances by demonstra
 
 ### 2.2 Colors
 
-Eleven colors total. ROYGBIV forms the core rainbow sequence; five additional colors cover common real-world encounters.
+Ten colors total. ROYGBV forms the core rainbow sequence; four additional colors cover common real-world encounters.
 
 | Color | Hex (approx.) | Teaching Note |
 |---|---|---|
-| Red | `#FF0000` | ROYGBIV — barn door, apple |
-| Orange | `#FF8C00` | ROYGBIV — pumpkin, carrot |
-| Yellow | `#FFD700` | ROYGBIV — sun, hay, chick |
-| Green | `#228B22` | ROYGBIV — grass, leaves, frog |
-| Blue | `#1E90FF` | ROYGBIV — sky, water, bluebird |
-| Indigo | `#4B0082` | ROYGBIV — **assess_weight: 0.3** (hard to distinguish from violet) |
-| Violet / Purple | `#8B00FF` | ROYGBIV — lavender flower, plum |
+| Red | `#FF0000` | ROYGBV — barn door, apple |
+| Orange | `#FF8C00` | ROYGBV — pumpkin, carrot |
+| Yellow | `#FFD700` | ROYGBV — sun, hay, chick |
+| Green | `#228B22` | ROYGBV — grass, leaves, frog |
+| Blue | `#1E90FF` | ROYGBV — sky, water, bluebird |
+| Purple | `#8B00FF` | ROYGBV — lavender flower, plum |
 | Pink | `#FF69B4` | Extension — blossom, pig |
 | Brown | `#8B4513` | Extension — fence, soil, horse |
 | White | `#F5F5F5` | Extension — clouds, sheep wool, eggs |
 | Black | `#1A1A1A` | Extension — crow, night sky, hooves |
-
-> **Indigo Note:** Indigo is genuinely difficult for young children to distinguish from blue and violet. It is included in the rainbow sequence for completeness but carries `assess_weight: 0.3` in the content data model — it is taught but not rigorously tested.
 
 ### 2.3 Shapes
 
