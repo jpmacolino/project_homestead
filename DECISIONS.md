@@ -4,6 +4,19 @@ This is an append-only log of decisions made during the build and their rational
 
 ---
 
+## 2026-05-09 — colors.json extended with color_hex field
+
+Each entry in src/data/colors.json now includes a `color_hex` string
+field (e.g. `"color_hex": "#EF4444"`). Required by SkillCard to render
+the color swatch via inline style — Tailwind cannot generate dynamic
+color classes at runtime. The Skill interface in src/data/types.ts
+declares `color_hex` as optional (`color_hex?: string`) so that
+letters, numbers, and shapes data remain compatible without the field.
+
+Purple is `#800080` per Decision #7 (indigo/violet collapsed to one
+entry). White uses `#FFFFFF`; the card's amber-50 background provides
+enough contrast contrast for the swatch to read as distinctly white.
+
 ## 2026-05-09 — Decision #12 amended: full-screen overlay rule
 
 Decision #12 originally required pointer-events-none on full-screen

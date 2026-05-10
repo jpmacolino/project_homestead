@@ -6,16 +6,17 @@ import lettersData from "./letters.json";
 import numbersData from "./numbers.json";
 import shapesData from "./shapes.json";
 import colorsData from "./colors.json";
+import type { Skill } from "./types";
 
 export const ACTIVE_CHILD_ID = "child_1";
 
 export type TopicKey = "letters" | "numbers" | "shapes" | "colors";
 
 export const HUB_CONFIG = [
-  { topic: "letters" as TopicKey, label: "Letters", icon: hubLetters, data: lettersData as { id: string }[] },
-  { topic: "numbers" as TopicKey, label: "Numbers", icon: hubNumbers, data: numbersData as { id: string }[] },
-  { topic: "shapes"  as TopicKey, label: "Shapes",  icon: hubShapes,  data: shapesData  as { id: string }[] },
-  { topic: "colors"  as TopicKey, label: "Colors",  icon: hubColors,  data: colorsData  as { id: string }[] },
+  { topic: "letters" as TopicKey, label: "Letters", icon: hubLetters, data: lettersData as Skill[] },
+  { topic: "numbers" as TopicKey, label: "Numbers", icon: hubNumbers, data: numbersData as Skill[] },
+  { topic: "shapes"  as TopicKey, label: "Shapes",  icon: hubShapes,  data: shapesData  as Skill[] },
+  { topic: "colors"  as TopicKey, label: "Colors",  icon: hubColors,  data: colorsData  as Skill[] },
 ];
 
 export const VALID_TOPICS = new Set<string>(HUB_CONFIG.map((h) => h.topic));

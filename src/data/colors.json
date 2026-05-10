@@ -8,7 +8,8 @@
     "association": "Red is the color of a ripe tomato fresh from the garden!",
     "audio_key": "color_red",
     "assess_weight": 1.0,
-    "image_key": "color_red"
+    "image_key": "color_red",
+    "color_hex": "#EF4444"
   },
   {
     "id": "color_orange",
@@ -19,7 +20,8 @@
     "association": "Orange is the color of a plump pumpkin sitting on the porch!",
     "audio_key": "color_orange",
     "assess_weight": 1.0,
-    "image_key": "color_orange"
+    "image_key": "color_orange",
+    "color_hex": "#F97316"
   },
   {
     "id": "color_yellow",
@@ -30,7 +32,8 @@
     "association": "Yellow is the color of a sunflower field reaching toward the sky!",
     "audio_key": "color_yellow",
     "assess_weight": 1.0,
-    "image_key": "color_yellow"
+    "image_key": "color_yellow",
+    "color_hex": "#EAB308"
   },
   {
     "id": "color_green",
@@ -41,7 +44,8 @@
     "association": "Green is the color of the lush summer pasture after the rain!",
     "audio_key": "color_green",
     "assess_weight": 1.0,
-    "image_key": "color_green"
+    "image_key": "color_green",
+    "color_hex": "#22C55E"
   },
   {
     "id": "color_blue",
@@ -52,7 +56,8 @@
     "association": "Blue is the color of the clear sky stretching wide over the meadow!",
     "audio_key": "color_blue",
     "assess_weight": 1.0,
-    "image_key": "color_blue"
+    "image_key": "color_blue",
+    "color_hex": "#3B82F6"
   },
   {
     "id": "color_purple",
@@ -63,7 +68,8 @@
     "association": "Purple is the color of lavender blossoms in the herb garden, plums hanging on the tree, and grapes ripening on the vine!",
     "audio_key": "color_purple",
     "assess_weight": 1.0,
-    "image_key": "color_purple"
+    "image_key": "color_purple",
+    "color_hex": "#800080"
   },
   {
     "id": "color_pink",
@@ -74,7 +80,8 @@
     "association": "Pink is the color of the piglets playing in the barnyard mud!",
     "audio_key": "color_pink",
     "assess_weight": 1.0,
-    "image_key": "color_pink"
+    "image_key": "color_pink",
+    "color_hex": "#EC4899"
   },
   {
     "id": "color_brown",
@@ -85,7 +92,8 @@
     "association": "Brown is the color of the rich soil turned fresh in the garden bed!",
     "audio_key": "color_brown",
     "assess_weight": 1.0,
-    "image_key": "color_brown"
+    "image_key": "color_brown",
+    "color_hex": "#92400E"
   },
   {
     "id": "color_white",
@@ -96,7 +104,8 @@
     "association": "White is the color of the fluffy wool on a sheep grazing in the pasture!",
     "audio_key": "color_white",
     "assess_weight": 1.0,
-    "image_key": "color_white"
+    "image_key": "color_white",
+    "color_hex": "#FFFFFF"
   },
   {
     "id": "color_black",
@@ -107,6 +116,7 @@
     "association": "Black is the color of the glossy feathers on the rooster strutting in the yard!",
     "audio_key": "color_black",
     "assess_weight": 1.0,
-    "image_key": "color_black"
+    "image_key": "color_black",
+    "color_hex": "#1C1917"
   }
 ]
