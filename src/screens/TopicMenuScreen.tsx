@@ -64,7 +64,7 @@ export default function TopicMenuScreen() {
       <button
         onClick={() => navigate("/")}
         aria-label="Go home"
-        className="absolute top-4 left-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/80 shadow-md text-xl transition-all duration-150 active:scale-95 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400"
+        className="absolute top-4 left-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/80 shadow-md text-xl transition-all duration-150 active:scale-95 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-400"
       >
         🏠
       </button>

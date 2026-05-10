@@ -157,6 +157,17 @@ export function useProgress(childId: string) {
     setLearnSeen(updated);
   }, [childId]);
 
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      (window as Window & { __devMarkAllLearnComplete?: () => void })
+        .__devMarkAllLearnComplete = __devMarkAllLearnComplete;
+      return () => {
+        delete (window as Window & { __devMarkAllLearnComplete?: () => void })
+          .__devMarkAllLearnComplete;
+      };
+    }
+  }, [__devMarkAllLearnComplete]);
+
   return {
     recordSkillEvent,
     markMastered,
