@@ -4,6 +4,24 @@ This is an append-only log of decisions made during the build and their rational
 
 ---
 
+## 2026-05-09 — Session 4 close-out notes
+
+Learn Mode shipped end-to-end. Three notes for future sessions:
+
+- colors.json has 10 entries, not the 11 listed in BUILD_SPEC §2.4 /
+  Appendix A. This matches Decision #7 (indigo + violet collapsed
+  to purple). The roster is correct; the spec is the document that
+  is out of date. BUILD_SPEC will be reconciled before v1.
+
+- Nunito font is now loaded globally via index.html and configured
+  in tailwind.config.js as font-family.display. Components use
+  Tailwind's font-display utility class to opt in.
+
+- Learn Mode celebration auto-return is set to 4 seconds. Validated
+  during dev QA; revisit with real children before v1 — may need
+  to lengthen to allow the celebration narration to finish before
+  navigation.
+
 ## 2026-05-09 — colors.json extended with color_hex field
 
 Each entry in src/data/colors.json now includes a `color_hex` string
@@ -16,6 +34,7 @@ letters, numbers, and shapes data remain compatible without the field.
 Purple is `#800080` per Decision #7 (indigo/violet collapsed to one
 entry). White uses `#FFFFFF`; the card's amber-50 background provides
 enough contrast contrast for the swatch to read as distinctly white.
+The 10-color roster is confirmed correct per Decision #7.
 
 ## 2026-05-09 — Decision #12 amended: full-screen overlay rule
 
