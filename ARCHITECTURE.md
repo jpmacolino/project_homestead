@@ -10,7 +10,7 @@
 - **State:** React Context + useReducer (global app state)
 - **Audio:** Web Audio API (sound effects); HTML5 `<audio>` (character narration)
 - **Animation:** CSS transitions only — no animation libraries permitted at any phase
-- **Offline:** Service Worker + Cache API — full offline capability required from MVP onward
+- **Offline:** Service Worker + Cache API — v1 requirement, paired with Capacitor packaging (not MVP).
 - **Storage (MVP):** localStorage — single child profile, key/value pairs
 - **Storage (v1+):** IndexedDB via Dexie — multi-profile, structured queries, full schema
 - **Storage sync (v2+):** Supabase (Postgres + Auth + auto-generated PostgREST)
@@ -90,8 +90,8 @@ Skills, letters, numbers, shapes, colors, and seasons live in `src/data/*.json`.
 **6. CSS transitions only — no animation libraries at any phase.**
 The build spec prohibits heavy animation libraries (section 7.1). This is the technical enforcement of the product's "low stimulation, high engagement" design principle. If a component requires motion, it uses Tailwind's `transition-*` utilities or a hand-written `@keyframes` block in the global stylesheet. Framer Motion, GSAP, React Spring, and equivalent libraries are not permitted at any version. This decision holds even in v3 (desktop) where performance headroom increases.
 
-**7. Full offline capability is a hard architectural requirement from MVP onward, implemented via Service Worker + Cache API.**
-The MVP distribution is Kindle Fire USB sideload and local WiFi — no reliable internet access can be assumed during a child's session. The Service Worker is configured in Session 1 as part of the Vite PWA plugin setup, not deferred to v1. All content JSON, active-session audio files, character assets, and the application shell must be precached. This requirement is verified in the Phase 2 quality gate: "App functions fully offline — no network required at any point." A service worker that is skipped in MVP and backfilled later risks subtle caching bugs that are hard to reproduce.
+**7. Full offline capability is a v1 requirement, paired with Capacitor packaging — not an MVP requirement.**
+The original framing elevated Service Worker + Cache API to an MVP requirement. This was revisited at the start of Course 2 and deferred to v1, where SW setup, web app manifest, and PWA installability pair naturally with Capacitor's Android packaging. The MVP test environment is Kindle Fire on stable home WiFi, which does not require offline operation to validate the product. See the 2026-05-18 SW deferral entry in `DECISIONS.md` for the full rationale. v1 Phase 2 quality gate retains the "fully offline — no network required" verification step; MVP does not.
 
 **8. SVG is the preferred asset format; PNG is accepted only for Canva character exports.**
 The app ships across Kindle Fire (low-DPI), Android phones (variable DPI), and eventually desktop (high-DPI). SVG scales cleanly across all targets without per-resolution asset sets. All shape assets and any assets created in code are inline SVG or `.svg` files in `src/assets/`. Character illustrations and background scenes produced in Canva may export as PNG and are placed in `src/assets/` with a filename suffix of `_canva.png` to distinguish them from SVG sources. Google Fonts (Nunito or Fredoka One, SIL Open Font License) are used for all letter and number display — no rasterized font assets.

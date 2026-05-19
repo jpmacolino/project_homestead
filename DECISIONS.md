@@ -4,6 +4,36 @@ This is an append-only log of decisions made during the build and their rational
 
 ---
 
+## 2026-05-18 — Service Worker / PWA installability deferred to v1
+
+Decision #7 in ARCHITECTURE.md previously elevated "full offline
+capability via Service Worker + Cache API" to a hard MVP requirement.
+Revisited consciously and downgraded: SW setup, manifest, and PWA
+installability all move to v1, where they pair naturally with Capacitor
+packaging.
+
+Rationale: caching complexity is not worth MVP risk; offline assumptions
+are easier to get right alongside Capacitor's native packaging in v1;
+the MVP test environment (Kindle Fire on stable home WiFi) does not
+require offline support to validate the product. The original elevation
+was made 2026-05-08 before any screens existed and the risk profile has
+since clarified.
+
+ARCHITECTURE.md decision #7 has been amended in the same change to
+remove the contradiction. Service Worker work is now a v1 session, not
+an MVP requirement.
+
+## 2026-05-18 — Spec drift flagged: BUILD_SPEC §8.1 shape count
+
+BUILD_SPEC.md §8.1 lists "8 core shapes" as MVP scope. §2.3, Appendix A,
+and src/data/shapes.json all agree on 6 shapes (Circle, Square,
+Triangle, Rectangle, Star, Heart). The code and the rest of the spec
+are correct; §8.1 is a spec error.
+
+Logged here so the next agent that reads §8.1 doesn't try to "fix"
+shapes.json to match. BUILD_SPEC.md to be corrected in a dedicated
+spec-reconciliation pass before v1 — not part of the MVP build.
+
 ## 2026-05-09 — Session 4 close-out notes
 
 Learn Mode shipped end-to-end. Three notes for future sessions:
