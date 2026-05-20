@@ -4,6 +4,42 @@ This is an append-only log of decisions made during the build and their rational
 
 ---
 
+## 2026-05-19 — Practice Mode selection logic (Session 5, Prompt 1)
+
+**Practice results stored separately from skill events.**
+`homestead.practice_results.<childId>` is a new localStorage key holding
+`Record<string, PracticeResult>` (correct / incorrect / last_seen per skill).
+`recordPracticeAttempt` and `getPracticeResults` read/write this key directly
+without routing through React state — practice results don't drive UI re-renders
+inside `useProgress`; they drive card selection inside `usePracticeSession`.
+
+**`generateCard` extracted as a pure function export.**
+The card-generation algorithm lives in `generateCard(skills, practiceResults, history, rand?)` —
+a plain function, not a hook. `usePracticeSession` is a thin wrapper around it.
+This pattern keeps test setup to zero (no React renderer needed) and keeps the
+selection logic testable in isolation.
+
+**Vitest environment set to `node`, not `jsdom`.**
+All tests target the pure `generateCard` function. No React rendering, no DOM,
+no `localStorage` calls at test time. `node` environment avoids an extra
+devDependency (`jsdom`) and keeps the suite fast.
+
+**Seeded PRNG is an inline mulberry32 — no new test dependency.**
+Five lines of arithmetic. No library needed. The `rand` parameter on
+`generateCard` is optional (defaults to `Math.random`) so the hook is unchanged;
+tests inject the seeded function directly.
+
+**Distractor anti-repetition triggers a single re-roll.**
+If the randomly selected distractor set exactly matches the previous card's set
+(same three IDs, any order), one distractor is replaced with a random choice from
+the remaining eligible non-target skills. The re-roll is skipped when the topic
+has ≤ 4 total skills (only 3 non-targets = no alternative distractor available).
+
+**Target anti-repetition relaxes to "not last 1" for topics with ≤ 3 skills.**
+The normal constraint ("not in last 2") would exhaust all choices for a 3-skill
+topic. The relaxed constraint keeps the hook safe for edge-case data without
+crashing or infinite-looping. No MVP topic triggers this path.
+
 ## 2026-05-18 — Service Worker / PWA installability deferred to v1
 
 Decision #7 in ARCHITECTURE.md previously elevated "full offline

@@ -29,6 +29,7 @@ The build spec pins React 18 and React Router v6 explicitly. The packages below 
 | TypeScript | ^5.x | Spec mandates TypeScript from session 1 but does not pin a minor version. 5.x is the current stable major. |
 | Tailwind CSS | ^3.x | Spec says "core utilities only — no compiler required." Tailwind v3 via PostCSS plugin with Vite satisfies this. v4 is excluded as insufficiently mature at project start. |
 | Dexie | ^3.x | Stable major; no breaking changes pending. Used from v1 onward; not installed for MVP. |
+| Vitest | ^4.x | Test runner with native Vite integration. Added in Session 5 for practice-mode selection logic. Uses `node` environment (pure-function tests; no jsdom). |
 
 ---
 

@@ -24,3 +24,4 @@ High-traffic references — consult these before asking or assuming:
 - **Audio key naming and abstraction** → `ARCHITECTURE.md` → Naming Conventions, and key decision #3
 - **Topic routing shape (`/topic/:topic`, `/learn/:topic`, `/practice/:topic`)** → 2026-05-09 topic hub decision in `DECISIONS.md`
 - **Practice unlock gating (`homestead.learn_seen.<topic>`)** → 2026-05-09 topic hub decision in `DECISIONS.md`
+- **Known items deferred to specific triggers** → `OPEN_ITEMS.md`

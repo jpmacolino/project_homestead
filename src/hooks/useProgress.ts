@@ -1,6 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
 import type { ChildProgress, MasteryRecord, SkillResult } from "../types/progress";
 
+export type PracticeResult = { correct: number; incorrect: number; last_seen: number };
+
+const PRACTICE_RESULTS_PREFIX = "homestead.practice_results.";
+
+function practiceResultsKey(childId: string): string {
+  return `${PRACTICE_RESULTS_PREFIX}${childId}`;
+}
+
+function loadPracticeResults(childId: string): Record<string, PracticeResult> {
+  try {
+    const raw = localStorage.getItem(practiceResultsKey(childId));
+    if (raw) return JSON.parse(raw) as Record<string, PracticeResult>;
+  } catch {
+    // corrupted storage — start fresh
+  }
+  return {};
+}
+
 const KEY_PREFIX = "homestead_progress_";
 
 const LEARN_SEEN_PREFIX = "homestead.learn_seen.";
@@ -127,6 +145,28 @@ export function useProgress(childId: string) {
     [progress.skillEvents]
   );
 
+  const recordPracticeAttempt = useCallback(
+    (skillId: string, wasCorrectFirstTap: boolean): void => {
+      const current = loadPracticeResults(childId);
+      const prev = current[skillId] ?? { correct: 0, incorrect: 0, last_seen: 0 };
+      const updated: Record<string, PracticeResult> = {
+        ...current,
+        [skillId]: {
+          correct: prev.correct + (wasCorrectFirstTap ? 1 : 0),
+          incorrect: prev.incorrect + (wasCorrectFirstTap ? 0 : 1),
+          last_seen: Date.now(),
+        },
+      };
+      localStorage.setItem(practiceResultsKey(childId), JSON.stringify(updated));
+    },
+    [childId]
+  );
+
+  const getPracticeResults = useCallback(
+    (): Record<string, PracticeResult> => loadPracticeResults(childId),
+    [childId]
+  );
+
   const resetProgress = useCallback((): void => {
     persist({ childId, skillEvents: [], mastery: [] });
   }, [childId, persist]);
@@ -178,5 +218,7 @@ export function useProgress(childId: string) {
     isTopicLearnComplete,
     markTopicLearnComplete,
     __devMarkAllLearnComplete,
+    recordPracticeAttempt,
+    getPracticeResults,
   };
 }
